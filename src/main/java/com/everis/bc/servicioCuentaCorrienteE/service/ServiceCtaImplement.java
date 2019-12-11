@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 import com.everis.bc.servicioCuentaCorrienteE.model.CuentaCorrienteE;
 import com.everis.bc.servicioCuentaCorrienteE.model.Movimientos;
@@ -15,7 +14,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
-@Configuration
 public class ServiceCtaImplement implements ServiceCta {
 
 	@Autowired
@@ -75,7 +73,7 @@ public class ServiceCtaImplement implements ServiceCta {
 				case "deposito":{
 					cta.setSaldo(saldo+movimiento.getMonto());
 					repo1.save(cta).subscribe();
-					repoMov.save(movimiento);
+					repoMov.save(movimiento).subscribe();
 					respuesta.put("Result", "Deposito realizado, su nuevo saldo es: "+(saldo+movimiento.getMonto()));
 					return respuesta;
 				}
