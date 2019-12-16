@@ -28,7 +28,7 @@ public class CuentaCorrienteEController {
 	}
 	
 	@GetMapping("/getCcorrienteEData/{doc}")
-	public Mono<CuentaCorrienteE> getCcorrienteData(@PathVariable("doc") String doc){
+	public Flux<CuentaCorrienteE> getCcorrienteData(@PathVariable("doc") String doc){
 		return s_cuenta.getDataByDoc(doc);
 	}
 	

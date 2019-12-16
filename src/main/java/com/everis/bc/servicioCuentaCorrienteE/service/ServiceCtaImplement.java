@@ -95,9 +95,14 @@ public class ServiceCtaImplement implements ServiceCta {
 	}
 
 	@Override
-	public Mono<CuentaCorrienteE> getDataByDoc(String doc) {
+	public Flux<CuentaCorrienteE> getDataByDoc(String doc) {
 		// TODO Auto-generated method stub
-		return repo1.findByTitularesDoc(doc);
+		return repo1.findByTitularesDoc(doc)
+				.switchIfEmpty(Mono.just("").flatMap(r->{
+					CuentaCorrienteE cta2=new CuentaCorrienteE();
+					return Mono.just(cta2);
+				})
+				);
 	}
 
 	@Override
