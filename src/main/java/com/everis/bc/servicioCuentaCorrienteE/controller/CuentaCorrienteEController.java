@@ -42,9 +42,9 @@ public class CuentaCorrienteEController {
 		return s_cuenta.saveMovimiento(movimiento);
 	}
 	
-	@GetMapping("/getMovimientosCorrienteE")
-	public Flux<Movimientos> getMovimientosCorriente(){
-		return s_cuenta.getMovimientos();
+	@GetMapping("/getMovimientosCorrienteE/{nro_cuenta}")
+	public Flux<Movimientos> getMovimientosCorriente(@PathVariable("nro_cuenta") String nro_cuenta){
+		return s_cuenta.getMovimientos(nro_cuenta);
 	}
 
 }
