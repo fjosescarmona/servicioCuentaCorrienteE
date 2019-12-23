@@ -23,7 +23,17 @@ public interface ServiceCta {
 	
 	public Mono<CuentaCorrienteE> editData(String id, CuentaCorrienteE cuenta);
 	
-	public Mono<Map<String, Object>> saveMovimiento(Movimientos mov);
+	public Mono<Movimientos> savePagotdc(Movimientos mov);
+	
+	public Mono<Movimientos> saveDeposito(Movimientos mov);
+	
+	public Mono<Movimientos> saveRetiro(Movimientos mov);
+	
+	public Mono<Movimientos> getTransfer(Movimientos mov);
+	
+	public Mono<Movimientos> setTransfer(Movimientos mov);
 	
 	public Flux<Movimientos> getMovimientos(String nro_cuenta);
+	
+	public Flux<Movimientos> getRangeMovimientos(String nro_cuenta, String from, String to);
 }

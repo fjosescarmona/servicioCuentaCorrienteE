@@ -37,14 +37,39 @@ public class CuentaCorrienteEController {
 		return s_cuenta.getSaldo(nro_cuenta);
 	}
 	
-	@PostMapping("/saveMovimientosCorrienteE")
-	public Mono<Map<String, Object>> saveMovimientosCorriente(@RequestBody Movimientos movimiento){
-		return s_cuenta.saveMovimiento(movimiento);
+	@PostMapping("/savePagotdcEcorriente")
+	public Mono<Movimientos> savePagotdcEcorriente(@RequestBody Movimientos movimiento){
+		return s_cuenta.savePagotdc(movimiento);
+	}
+	
+	@PostMapping("/saveDepositoEcorriente")
+	public Mono<Movimientos> saveDepositoEcorriente(@RequestBody Movimientos movimiento){
+		return s_cuenta.saveDeposito(movimiento);
+	}
+	
+	@PostMapping("/saveRetiroEcorriente")
+	public Mono<Movimientos> saveRetiroEcorriente(@RequestBody Movimientos movimiento){
+		return s_cuenta.saveRetiro(movimiento);
+	}
+	
+	@PostMapping("/getTransferEcorriente")
+	public Mono<Movimientos> getTransferEcorriente(@RequestBody Movimientos movimiento){
+		return s_cuenta.getTransfer(movimiento);
+	}
+	
+	@PostMapping("/setTransferEcorriente")
+	public Mono<Movimientos> setTransferEcorriente(@RequestBody Movimientos movimiento){
+		return s_cuenta.setTransfer(movimiento);
 	}
 	
 	@GetMapping("/getMovimientosCorrienteE/{nro_cuenta}")
 	public Flux<Movimientos> getMovimientosCorriente(@PathVariable("nro_cuenta") String nro_cuenta){
 		return s_cuenta.getMovimientos(nro_cuenta);
+	}
+	
+	@GetMapping("/getRangeMovimientosEcorriente/{nro_cuenta}/{from}/{to}")
+	public Flux<Movimientos> getRangeMovimientosEcorriente(@PathVariable("nro_cuenta") String nro_cuenta, @PathVariable("from") String from, @PathVariable("to") String to){
+		return s_cuenta.getRangeMovimientos(nro_cuenta, from, to);
 	}
 
 }
