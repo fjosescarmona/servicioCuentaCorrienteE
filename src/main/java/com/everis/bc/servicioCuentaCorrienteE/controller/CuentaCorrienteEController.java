@@ -23,7 +23,7 @@ public class CuentaCorrienteEController {
 	private ServiceCta s_cuenta;
 
 	@PostMapping("/saveCcorrienteEData")
-	public Mono<Map<String, Object>> saveCcorrienteData(@RequestBody CuentaCorrienteE cuenta){
+	public Mono<CuentaCorrienteE> saveCcorrienteData(@RequestBody CuentaCorrienteE cuenta){
 		return s_cuenta.saveData(cuenta);
 	}
 	
